@@ -1,4 +1,4 @@
-# Documentation for [Quicklie Business API](http://www.staging.quickli.com) API v1.0
+# Documentation for [Quicklie Business API](http://staging.quickli.com) API v1.0
 
 
 1. To access Quickli Business API first step is authenticate.
@@ -11,7 +11,7 @@
 * In parameters `app_id` and `access_key` should be present.
 * partner_id(unique), store_id(unique), app_id(unique), access_key(unique) and address are required for call.
 * For customer address required parameters are: destination_address(customer address), destination_location(customer location), destination_phone(customer phone), destination_ltd(latitude) and destination_lng(longitude).
-* Url for the creating new order:- `/api/v1/business/orders`. Request type is `POST`.
+* Url for the creating new order:- `/api/v1/business/createOrder`. Request type is `POST`.
 
 
 Sample call:-
