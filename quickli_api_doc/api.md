@@ -3,7 +3,7 @@
 
 1. To access Quickli Business API first step is authenticate.
 2. We will provide app_id and access_key for users after successful registration. Without these auth tokens, no application could access API. This `app_id` and `access_key` should be present in every call to Quickli Business API.
-3. Quickli Business API version 1 url for testing is `http://staging.quickli.com/`.
+3. Quickli Business API version 1 root url for testing is `http://staging.quickli.com/`.
 
 ## Create New Order
 
