@@ -1,4 +1,4 @@
-# Documentation for [Quicklie Business API](http://staging.quickli.com) API v1.0
+# Documentation for [Quickli Business API](http://staging.quickli.com) API v1.0
 
 
 1. To access Quickli Business API first step is authenticate.
