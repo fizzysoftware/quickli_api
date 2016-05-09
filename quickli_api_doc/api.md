@@ -369,3 +369,65 @@ Sample call:-
 }
 
 ```
+
+## Cancel Order
+
+### Cancelling current request :-
+* This call is made whenever you want to cancel an ongoing request. 
+* In parameters `app_id` and `access_key` should be present.
+* partner_id(unique), store_id(unique), app_id(unique), access_key(unique) and order_id(unique) are required for call.
+* Url for the cancel order call is :- `api/v1/business/orders/cancel`. Request type is `POST`.
+
+Sample call:-
+
+```array
+  'partner_id' => '3',
+  'store_id' => '8',
+  'app_id' => '3f426816b1859f6f9688cd266ddfadd7',
+  'access_key' => '3f426816b1859f6f9688cd266ddfadd7',
+  'order_id' => 'gqmXdmQ5b57BCZn6P'
+
+```
+
+* If tokens for call are authorised successfully, API will return status as `Success` with order details in `json` format within array.
+
+```json
+
+{
+  "Status" : "Success",
+  "message" : "Order cancelled successfully."}
+}
+
+```
+
+* If required parameters are missing, API will return status as `Fail` in `json` format.
+
+```json
+
+{
+  "Status" : "Fail",
+  "Message" : "Required Parameters Missing"
+}
+
+```
+
+* If store credentials are NOT authenticated, API will return status as `Fail` in `json` format.
+
+```json
+
+{
+  "Status" : "Fail",
+  "Message" : "Unauthorised Request"
+}
+
+```
+* If partner store is not active, API will return status as `Fail` in `json` format.
+
+```json
+
+{
+  "Status" : "Fail",
+  "Message" : "Store is not active"
+}
+
+```
