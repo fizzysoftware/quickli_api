@@ -1,4 +1,4 @@
-# Documentation for [Quickli Business API](http://staging.quickli.com) API v3.0
+# Documentation for [Quickli Business API](http://staging.quickli.com) v3.0
 
 
 1. To access Quickli Business API first step is authenticate.
@@ -11,7 +11,7 @@
 * In parameters `app_id` and `access_key` should be present.
 * partner_id(unique), store_id(unique), app_id(unique), access_key(unique) and address are required for call.
 * For customer address, required parameters are: destination_address(customer address), destination_location(customer location), destination_phone(customer phone), destination_ltd(latitude) and destination_lng(longitude).
-* Url for the creating new order:- `/api/v1/business/createOrder`. Request type is `POST`.
+* Url for the creating new order:- `/api/v3/business/createOrder`. Request type is `POST`.
 
 
 Sample Call Single Package:-
@@ -69,7 +69,6 @@ Sample Call Multiple Package:-
      "destination_phone": "1111111111"
       }]
 }
-
 
 
 ```
@@ -158,96 +157,13 @@ Sample Call Multiple Package:-
 
 ```
 
-### Order with customer address not present:-
-* In parameters `app_id` and `access_key` should be present.
-* partner_id(unique), store_id(unique), app_id(unique), access_key(unique) and address are required for call.
-* Url for the creating new order:- `/api/v1/business/orders`. Request type is `POST`.
-
-
-Sample call:-
-
-```array
-  'partner_id' => '3',
-  'store_id' => '2',
-  'app_id' => 'o1b94DePfikYHyAQdhu9vtOdtDiMiMQR',
-  'access_key' => 'I7OyrBI8qta4mv0RB6KrwQibBdMnBv0c',
-  'address' => 'No',
-
-```
-
-* If tokens for calls are authorised and order is created successfully, API will return status as `Success` with order id and current order status in `json` format.
-
-```json
-
-{
-  "status": "Success",
-  "order_id": "230",
-  "order_status": "Processing"
-}
-
-```
-
-* If required parameters are missing, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Required Parameters Missing"
-}
-
-```
-
-* If store credentials are NOT authenticated, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Unauthorised Request"
-}
-
-```
-* If partner store is not active, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Partner is not active"
-}
-
-```
-
-* If store is not found, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Store not found"
-}
-
-```
-
-* If store is not associated with requesting partner, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Store not associated with requesting partner"
-}
-
-```
-
 ## Track Order
 
 ### Tracking order :-
 * This call is made whenever updated order status is required.
 * In parameters `app_id` and `access_key` should be present.
 * partner_id(unique), store_id(unique), app_id(unique), access_key(unique) and order_id are required for call.
-* Url for the accept order call is :- `/api/v1/business/orders/track`. Request type is `POST`.
+* Url for the accept order call is :- `/api/v3/business/orders/track`. Request type is `POST`.
 
 Sample call:-
 
@@ -347,138 +263,6 @@ Sample call:-
   "Message" : "Order not associated with requesting store and partner."
 }
 
-```
-
-## Check Delivery Balance
-
-### Tracking delivery balance :-
-* This call is made whenever updated delivery balance is required.
-* In parameters `app_id` and `access_key` should be present.
-* partner_id(unique), app_id(unique) and access_key(unique) are required for call.
-* Url for the accept order call is :- `/api/v1/business/balance/track`. Request type is `POST`.
-
-Sample call:-
-
-```array
-  'partner_id' => '3',
-  'app_id' => '3f426816b1859f6f9688cd266ddfadd7',
-  'access_key' => '3f426816b1859f6f9688cd266ddfadd7'
-
-```
-
-* If tokens for call are authorised successfully, API will return status as `Success` with order details in `json` format within array.
-
-```json
-
-{
-  "Status" : "Success",
-  "Available Delivery Balance" : "189.40"
-}
-
-```
-
-* If required parameters are missing, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Required Parameters Missing"
-}
-
-```
-
-* If store credentials are NOT authenticated, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Unauthorised Request"
-}
-
-```
-* If partner store is not active, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Partner is not active"
-}
-
-```
-
-* If delivery balance is not applicable for requesting partner, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Delivery balance is not applicable with this account."
-}
-
-```
-
-## Cancel Order
-
-### Cancelling current request :-
-* This call is made whenever you want to cancel an ongoing request. 
-* In parameters `app_id` and `access_key` should be present.
-* partner_id(unique), store_id(unique), app_id(unique), access_key(unique) and order_id(unique) are required for call.
-* Url for the cancel order call is :- `api/v1/business/orders/cancel`. Request type is `POST`.
-
-Sample call:-
-
-```array
-  'partner_id' => '3',
-  'store_id' => '8',
-  'app_id' => '3f426816b1859f6f9688cd266ddfadd7',
-  'access_key' => '3f426816b1859f6f9688cd266ddfadd7',
-  'order_id' => 'gqmXdmQ5b57BCZn6P'
-
-```
-
-* If tokens for call are authorised successfully, API will return status as `Success` with order details in `json` format within array.
-
-```json
-
-{
-  "Status" : "Success",
-  "message" : "Order cancelled successfully."}
-}
-
-```
-
-* If required parameters are missing, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Required Parameters Missing"
-}
-
-```
-
-* If store credentials are NOT authenticated, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Unauthorised Request"
-}
-
-```
-* If partner store is not active, API will return status as `Fail` in `json` format.
-
-```json
-
-{
-  "Status" : "Fail",
-  "Message" : "Store is not active"
-}
 
 ```
 
